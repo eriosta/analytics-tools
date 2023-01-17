@@ -10,3 +10,14 @@
 -- FROM tracks
 -- Run below instead
 SELECT TrackId, Name, AlbumId FROM tracks
+
+-- #2 Provide one-to-many relationships to yourself
+-- Artist to albumns
+SELECT ArtistId, COUNT(AlbumId)
+FROM albums
+GROUP BY ArtistId
+
+-- Customers to invoices
+SELECT CustomerId, COUNT(InvoiceId)
+FROM invoices
+GROUP BY CustomerId
