@@ -1,7 +1,7 @@
 -- SQLite
 -- Selecting and retrieving data with SQL
 
--- 1
+-- #1
 -- the following returns an error because it's missing commas between variables
 -- SELECT
 -- TrackID
