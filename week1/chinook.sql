@@ -40,4 +40,3 @@ GROUP BY SupportRepId
 -- and times as TEXT, REAL, or INTEGER values. Examples:
 -- TEXT as ISO8601 strings ("YYYY-MM-DD HH:MM:SS.SSS")
 
-

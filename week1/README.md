@@ -8,3 +8,5 @@ Working with SQLite in Visual Studio Code
 4. Choose `chinook.db`
 5. Open the Explorer view (Cmd/Ctrl + Shift + E)
 6. Right-click on `chinook.db` and select "New Query"
+
+More about storage classes and data types: https://www.sqlite.org/datatype3.html
