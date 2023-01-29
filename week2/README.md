@@ -48,7 +48,7 @@ ORDER BY Biweekly_High_Rate DESC
 --- $9,726.38
 ```
 
-What is the pay type for all `Job_Code` that start with '03'?
+What is the pay type for all `Job_Code` that start with '03'? (Note: Nothing with "03")
 ```sql
 SELECT Job_Code, Pay_Type
 FROM salary_range_by_job_classification
@@ -57,6 +57,13 @@ WHERE Job_Code LIKE '3%'
 ```
 
 Run a query to find the `Eff_Date` or `Sal_End_Date` for `Grade` == Q90H0.
+``` sql
+SELECT Eff_Date, Sal_End_Date, "Grade " as grade --- There is a space after the column name
+FROM salary_range_by_job_classification
+WHERE grade=='Q90H0'
+-- Eff_Date	    Sal_End_Date	                    grade
+-- 12/26/2009   12:00:00 AM	06/30/2010 12:00:00 AM	Q90H0
+```
 
 Sort the Biweekly low rate in ascending order. Hint: there are 4 lines to run this query. Are these values properly sorted?
 
