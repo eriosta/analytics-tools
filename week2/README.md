@@ -29,7 +29,7 @@ FROM salary_range_by_job_classification
 -- 2
 ```
 
-Excluding $0.00, what is the minimum bi-weekly high rate of pay? Please include the dollar sign and decimal point in your answer.
+Excluding $0.00, what is the minimum `Biweekly_High_Rate` of pay? Please include the dollar sign and decimal point in your answer.
 
 ```sql
 SELECT Biweekly_High_Rate
@@ -65,12 +65,60 @@ WHERE grade=='Q90H0'
 -- 12/26/2009   12:00:00 AM	06/30/2010 12:00:00 AM	Q90H0
 ```
 
-Sort the Biweekly low rate in ascending order. Hint: there are 4 lines to run this query. Are these values properly sorted?
+Sort the `Biweekly_Low_Rate` in ascending order. Hint: there are 4 lines to run this query. Are these values properly sorted?
+```sql
+SELECT Biweekly_Low_Rate
+FROM salary_range_by_job_classification
+ORDER BY Biweekly_Low_Rate ASC
+-- No
+```
 
-Write and run a query: What Step are Job Codes 0110-0400? Hint: there are 6 lines to run this query.
+Write and run a query: What `Step` are `Job_Code` 0110-0400 (*through*?)? Hint: there are 6 lines to run this query.
+```sql
+SELECT Step, 
+        REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(Job_Code,'Q',''), 'H',''), 'P',''), 'AC',''),'AB',''), ' ','') AS Clean_Job_Code
+FROM salary_range_by_job_classification
+WHERE Job_Code BETWEEN 110 AND 400
+-- Need to convert TEXT to INT/FLOAT
+```
 
-Write and run a query: What is the Biweekly High Rate minus the Biweekly Low Rate for job Code 0170?
+Write and run a query: What is the`Biweekly_High_Rate` minus the `Biweekly_Low_Rate` for `Job_Code` 0170?
+```sql
+SELECT Job_Code, Biweekly_High_Rate, Biweekly_Low_Rate, (Biweekly_High_Rate - Biweekly_Low_Rate)
+FROM salary_range_by_job_classification
+WHERE Job_Code == 0170
+--- 0
+--- This happens to be right but  the substraction did not occur normally because both data types are TEXT and not NUMERIC
+```
 
-Write and run a query: What is the Extended Step for Pay Types M, H, and D?
+Write and run a query: What is the `Extended_Step` for `Pay_Type` == M, H, and D?
+```sql
+SELECT Extended_Step, Pay_Type
+FROM salary_range_by_job_classification
+WHERE Pay_Type IN ('M','H','D')
+-- Extended_Step	Pay_Type
+-- 0	            D
+-- 0	            D
+-- 0	            D
+-- 0	            M
+-- 0	            D
+-- 0	            D
+-- 0	            M
+-- 0	            H
+-- 0	            H
+-- 0	            H
+-- 0	            H
+-- 0	            H
+-- 0	            H
+-- 0	            H
+-- 0	            H
+```
 
-Write and run a query: What is the step for Union Code 990 and a Set ID of SFMTA or COMMN?
+Write and run a query: What is the `Step` for `Union_Code` 990 and `SetID` of SFMTA or COMMN?
+```sql
+SELECT Step,Union_Code,SetID
+FROM salary_range_by_job_classification
+WHERE Union_Code==990 AND (SetID=='SFMTA' OR SetID=='COMMN')
+--- Step	Union_Code	SetID
+--- 1	    990     	COMMN
+```
