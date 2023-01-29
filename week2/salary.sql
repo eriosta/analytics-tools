@@ -14,3 +14,6 @@ SELECT Biweekly_High_Rate
 FROM salary_range_by_job_classification
 ORDER BY Biweekly_High_Rate ASC
 
+SELECT Biweekly_High_Rate
+FROM salary_range_by_job_classification
+ORDER BY Biweekly_High_Rate DESC
