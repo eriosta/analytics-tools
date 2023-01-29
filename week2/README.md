@@ -61,7 +61,7 @@ Run a query to find the `Eff_Date` or `Sal_End_Date` for `Grade` == Q90H0.
 SELECT Eff_Date, Sal_End_Date, "Grade " as grade --- There is a space after the column name
 FROM salary_range_by_job_classification
 WHERE grade=='Q90H0'
--- Eff_Date	 Sal_End_Date	                        grade
+-- Eff_Date	Sal_End_Date	                        grade
 -- 12/26/2009   12:00:00 AM	06/30/2010 12:00:00 AM	Q90H0
 ```
 
