@@ -39,4 +39,3 @@ GROUP BY SupportRepId
 -- SQLite does NOT have a separate Time storage class, but the built-in Date And Time Functions can storage dates
 -- and times as TEXT, REAL, or INTEGER values. Examples:
 -- TEXT as ISO8601 strings ("YYYY-MM-DD HH:MM:SS.SSS")
-
