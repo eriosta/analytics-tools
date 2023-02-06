@@ -61,7 +61,7 @@ Run a query to find the `Eff_Date` or `Sal_End_Date` for `Grade` == Q90H0.
 SELECT Eff_Date, Sal_End_Date, "Grade " as grade --- There is a space after the column name
 FROM salary_range_by_job_classification
 WHERE grade=='Q90H0'
--- Eff_Date	    Sal_End_Date	                    grade
+-- Eff_Date	Sal_End_Date	                        grade
 -- 12/26/2009   12:00:00 AM	06/30/2010 12:00:00 AM	Q90H0
 ```
 
@@ -96,7 +96,7 @@ Write and run a query: What is the `Extended_Step` for `Pay_Type` == M, H, and D
 SELECT Extended_Step, Pay_Type
 FROM salary_range_by_job_classification
 WHERE Pay_Type IN ('M','H','D')
--- Extended_Step	Pay_Type
+-- Extended_Step    Pay_Type
 -- 0	            D
 -- 0	            D
 -- 0	            D
@@ -119,6 +119,6 @@ Write and run a query: What is the `Step` for `Union_Code` 990 and `SetID` of SF
 SELECT Step,Union_Code,SetID
 FROM salary_range_by_job_classification
 WHERE Union_Code==990 AND (SetID=='SFMTA' OR SetID=='COMMN')
---- Step	Union_Code	SetID
+--- Step    Union_Code	SetID
 --- 1	    990     	COMMN
 ```
