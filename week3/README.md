@@ -61,23 +61,43 @@ WHERE ART.Name = "Audioslave"
 -- Audioslave	Audioslave	Hypnotize	0.99
 -- Audioslave	Audioslave	Bring'em Back Alive	0.99
 -- ... 40 records total 
-
 ```
 
 Find the first and last name of any customer who does **not** have an invoice. Are there any customers returned from the query?
 
 ```sql
-
+SELECT c.FirstName, c.LastName
+FROM customers c
+WHERE c.CustomerId NOT IN (SELECT i.CustomerId FROM invoices i);
+-- None
 ```
 
 Find the total price for each album. What is the total price for the album `Big Ones`?
 
 ```sql
-
+SELECT albums.Title, SUM(invoice_items.UnitPrice * invoice_items.Quantity) AS Total_Price
+FROM albums
+JOIN tracks ON albums.AlbumId = tracks.AlbumId
+JOIN invoice_items ON tracks.TrackId = invoice_items.TrackId
+GROUP BY albums.Title
+HAVING albums.Title = 'Big Ones'
+-- The total price for the album "Big Ones" is $9.9
 ```
 
 How many records are created when you apply a **Cartesian join** to the invoice and invoice items table? How many records were retrieved?
 
 ``` sql
+SELECT *
+FROM invoices
+JOIN invoice_items
+ON 1=1;
 
+SELECT COUNT(*)
+FROM (
+SELECT *
+FROM invoices
+JOIN invoice_items
+ON 1=1
+) as result;
+-- 922880
 ```
