@@ -51,3 +51,7 @@ WHERE Job_Code == 0170
 SELECT Extended_Step, Pay_Type
 FROM salary_range_by_job_classification
 WHERE Pay_Type IN ('M','H','D')
+
+SELECT Step,Union_Code,SetID
+FROM salary_range_by_job_classification
+WHERE Union_Code==990 AND (SetID=='SFMTA' OR SetID=='COMMN')
